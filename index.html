@@ -2,19 +2,251 @@
 <html lang="ca">
   <head>
     <meta charset="UTF-8" />
-    <title>Botiga Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Botiga online professional amb els millors productes"
+    />
+    <meta name="keywords" content="botiga, comprar, productes, online" />
+    <meta name="author" content="Raullam" />
+
+    <title>Botiga Demo | Compra Online</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/estils.css" />
   </head>
   <body>
-    <header>
-      <h1>Botiga Demo</h1>
-      <input type="text" id="buscador" placeholder="Cerca productes..." />
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html">
+          <i class="bi bi-shop"></i>
+          Botiga Demo
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <i class="bi bi-house-door"></i>
+                Inici
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#productes">
+                <i class="bi bi-grid"></i>
+                Productes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link position-relative" href="carret.html">
+                <i class="bi bi-cart3"></i>
+                Carret
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  id="carret-badge"
+                >
+                  0
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="bg-primary text-white py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-3">Benvingut a la nostra Botiga</h1>
+            <p class="lead mb-4">
+              Descobreix els millors productes amb la millor qualitat i preu
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="input-group input-group-lg">
+              <span class="input-group-text bg-white">
+                <i class="bi bi-search"></i>
+              </span>
+              <input
+                type="text"
+                id="buscador"
+                class="form-control"
+                placeholder="Cerca productes..."
+                aria-label="Cerca productes"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <section id="grid-productes" class="grid"></section>
+    <!-- Main Content -->
+    <main class="py-5">
+      <div class="container">
+        <!-- Filter Section -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">
+                  <i class="bi bi-funnel"></i>
+                  Filtres
+                </h5>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <select class="form-select" id="filtre-categoria">
+                      <option selected>Totes les categories</option>
+                      <option value="electronics">Electrònica</option>
+                      <option value="roba">Roba</option>
+                      <option value="llibres">Llibres</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-select" id="filtre-preu">
+                      <option selected>Ordenar per preu</option>
+                      <option value="asc">Menor a major</option>
+                      <option value="desc">Major a menor</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      class="btn btn-outline-secondary w-100"
+                      id="reset-filtres"
+                    >
+                      <i class="bi bi-arrow-clockwise"></i>
+                      Netejar filtres
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <section id="productes">
+          <h2 class="h3 mb-4 fw-bold">Els nostres productes</h2>
+          <div
+            id="grid-productes"
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"
+          ></div>
+        </section>
+      </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3 mb-md-0">
+            <h5 class="fw-bold mb-3">
+              <i class="bi bi-shop"></i>
+              Botiga Demo
+            </h5>
+            <p class="text-muted small">
+              La teva botiga online de confiança amb els millors productes i
+              preus.
+            </p>
+          </div>
+          <div class="col-md-4 mb-3 mb-md-0">
+            <h5 class="fw-bold mb-3">Enllaços ràpids</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none small">
+                  Sobre nosaltres
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none small">
+                  Política de privacitat
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none small">
+                  Termes i condicions
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none small">
+                  Contacte
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="fw-bold mb-3">Xarxes socials</h5>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white fs-4">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="text-white fs-4">
+                <i class="bi bi-twitter"></i>
+              </a>
+              <a href="#" class="text-white fs-4">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="#" class="text-white fs-4">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4 mb-3 border-secondary" />
+        <div class="text-center text-muted small">
+          <p class="mb-0">
+            &copy; 2025 Botiga Demo. Tots els drets reservats. Desenvolupat per
+            Raullam
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom Scripts -->
     <script src="js/dades.js"></script>
     <script src="js/app.js"></script>
   </body>
